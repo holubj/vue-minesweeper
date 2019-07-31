@@ -26,6 +26,18 @@ export default class DifficultyForm extends Vue {
 
   public handleSubmit(e: any) {
     e.target.blur();
+
+    if (this.rows < 3 || this.cols < 3 || this.rows > 50 || this.cols > 50) {
+      this.rows = this.defaultRows;
+      this.cols = this.defaultCols;
+    }
+
+    if (this.mines < 1) {
+      this.mines = 1;
+    } else if (this.mines - 9 > this.rows * this.cols) {
+      this.mines = this.rows * this.cols - 9;
+    }
+
     this.$emit('handle-submitted', this.rows, this.cols, this.mines);
   }
 }
