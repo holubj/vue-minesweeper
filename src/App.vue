@@ -60,10 +60,6 @@ export default class App extends Vue {
   private flaggedMines: number = 0;
 
   public handleNew(rows: number, cols: number, mines: number) {
-    if (rows < 3 || cols < 3 || mines < 1) {
-      return;
-    }
-
     this.rows = rows;
     this.cols = cols;
     this.mines = mines;
